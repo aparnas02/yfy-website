@@ -1,0 +1,23 @@
+// nk body
+.nl {
+    &-body {
+        outline: none;
+    }
+    &-app {
+        &-root {
+            outline: none;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .nl-body {
+        min-width: 350px;
+    }
+
+    .layout-9 {
+        &.nl-body {
+            min-width: 384px;
+        }
+    }
+}

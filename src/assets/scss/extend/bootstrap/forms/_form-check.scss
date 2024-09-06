@@ -1,0 +1,49 @@
+@use "sass:math";
+
+
+.form { 
+
+    &-check {
+
+        --#{$prefix}form-check-label-font-size: 16px;
+        --#{$prefix}form-check-label-line-height: 1.5;
+    
+        --#{$prefix}form-check-label-color: #{$headings-color};
+    
+        gap: .5rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0px;
+    
+        &-input {
+
+            &:focus { 
+                box-shadow: var(--#{$prefix}primary-focus-box-shadow);
+            }
+
+            &:checked {
+                border-color: var(--#{$prefix}primary);
+                background-color: var(--#{$prefix}primary);
+            }
+    
+            & + label { 
+                color: var(--#{$prefix}form-check-label-color);
+                font-size: var(--#{$prefix}form-check-label-font-size);
+                line-height: var(--#{$prefix}form-check-label-line-height);
+            }
+
+        }
+    
+    }    
+}
+
+.layout-7,
+.layout-11,
+.layout-14 { 
+    .form-switch { 
+        .form-check-input { 
+            width: 70px;   
+            height: 36px;
+        }
+    }
+}

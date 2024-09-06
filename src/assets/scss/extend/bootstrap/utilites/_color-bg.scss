@@ -1,0 +1,61 @@
+// @mixin text-bg-soft-variant($color, $background: mix($color, $white, 12%), $border: transparent) {
+//     color: #{$color} !important;
+//     background-color: #{$background} !important;
+//     border-color: #{$border};
+// }
+
+// @mixin text-bg-solid-variant($color, $background: mix($color, $white, 100%), $border: transparent) {
+//     color: #fff !important;
+//     background-color: #{$background} !important;
+//     border-color: #{$border};
+// }
+
+// @mixin bg-soft-variant($color, $background: mix($color, $white, 24%)) {
+//     background-color: #{$background};
+// }
+
+@each $color, $value in $theme-colors {
+    .text-bg-#{$color}-soft {
+        $background: mix($value, white, 20%); // Adjust the percentage to control the softness
+        $lightness: lightness($background);
+        $textColor: if($lightness > 50, $value, white);
+
+        --#{$prefix}text-color: #{$textColor};
+        --#{$prefix}bg-soft-color: #{$background};
+
+        color: var(--#{$prefix}text-color);
+        background-color: var(--#{$prefix}bg-soft-color) !important;
+    }
+
+    .bg-#{$color}-soft {
+        --#{$prefix}bg-soft-color: #{mix($value, $white, 20%)};
+
+        background-color: var(--#{$prefix}bg-soft-color) !important;
+    }
+
+    // .btn-#{$color} {
+    //     @include text-bg-solid-variant($value);
+    // }
+
+    // .btn-#{$color}-soft {
+    //     @include text-bg-soft-variant($value);
+    // }
+
+    // .bg-#{$color}-soft {
+    //     @include bg-soft-variant($value);
+    // }
+
+    // .text-bg-#{$color}-soft {
+    //     @include text-bg-soft-variant($value);
+    // }
+
+    // .text-bg-#{$color} {
+    //     @include text-bg-solid-variant($value);
+    // }
+}
+
+@each $color, $value in $theme-gradient-colors {
+    .bg-gradient-#{$color} {
+        background: $value;
+    }
+}

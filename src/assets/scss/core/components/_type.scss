@@ -1,0 +1,25 @@
+.lead {
+    // line-height: $lead-line-height;
+    // letter-spacing: -$lead-letter-spacing;
+}
+
+@include media-breakpoint-down(sm) {
+    .h1,
+    h1 {
+        font-size: 1.625rem;
+    }
+    .h2,
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .h5,
+    h5 {
+        font-size: 1.125rem;
+    }
+
+    .lead,
+    p {
+        font-size: 1rem;
+    }
+}

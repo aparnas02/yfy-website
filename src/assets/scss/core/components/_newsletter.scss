@@ -1,0 +1,104 @@
+.nl-newsletter {
+  position: relative;
+
+  .form-control {
+    --#{$prefix}input-padding-x: 1.375rem;
+
+    &-lg { 
+      --#{$prefix}input-padding-x: 1.5rem;
+    }
+  }
+
+  &.style-3 { 
+
+    .form-control  { 
+
+      --#{$prefix}input-padding-y: 24px;
+
+      &::placeholder { 
+        
+        @media (max-width: 460px) { 
+          font-size: var(--#{$prefix}fs-10);
+        } 
+        
+      }
+
+      & + .btn { 
+        @media (max-width: 460px) {
+          font-size: var(--#{$prefix}fs-10);
+        }
+      }
+
+    }
+  }
+
+}
+
+.layout { 
+  &-6,
+  &-10,
+  &-13,
+  &-14 { 
+      .nl-newsletter { 
+        .form-control { 
+          --#{$prefix}border-color: var(--#{$prefix}dark);
+        }
+      }
+    }
+
+    &-7,
+    &-15,
+    &-20,
+    &-21,
+    &-23 { 
+      .nl-newsletter { 
+        .form-control,
+        .form-control-lg { 
+          border-radius: var(--#{$prefix}border-radius-pill);
+        }
+      }
+    }
+
+    &-8,
+    &-12,
+    &-16,
+    &-17 { 
+      .nl-newsletter { 
+        .form-control { 
+          --#{$prefix}input-padding-x: 1.25rem; 
+        }
+
+        &.style-1 {
+          .btn { 
+            --#{$prefix}btn-padding-y: 1.25rem;
+          }
+        }
+
+      }
+    }
+
+
+    &-17 { 
+      .nl-newsletter { 
+        &.style-1 { 
+          .btn { 
+            --#{$prefix}btn-padding-y: 1.5rem;
+          }
+        }
+      }
+    }
+
+    &-9 { 
+      .nl-newsletter { 
+        .form-control { 
+          --#{$prefix}input-placeholder-color: #{$gray-600};
+
+          transition: all 0.2s linear;
+
+          &:focus { 
+            padding-left: var(--#{$prefix}input-padding-x) !important;
+          }
+        }
+      }
+    }
+}

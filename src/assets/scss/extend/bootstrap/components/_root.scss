@@ -1,0 +1,17 @@
+:root {
+  --#{$prefix}primary: #{$blue};
+  --#{$prefix}primary-soft: #{$blue-100};
+  --#{$prefix}primary-rgb: #{to-rgb($blue)};
+
+  --#{$prefix}body-line-height: 1.6;
+
+  @include media-breakpoint-up(lg) { 
+    --#{$prefix}body-font-size: 1.25rem;
+  }
+  
+
+  @each $size, $value in $font-sizes {
+    --#{$prefix}fs-#{$size}: #{$value};
+  }
+  
+}

@@ -1,0 +1,10 @@
+// btn
+.btn {
+    --#{$prefix}btn-color: #fff;
+    --#{$prefix}btn-hover-color: #fff;
+    --#{$prefix}btn-active-color: #fff;
+
+    &-link { 
+        --#{$prefix}btn-color: var(--#{$prefix}dark);
+    }
+}

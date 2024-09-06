@@ -1,0 +1,23 @@
+.pagination { 
+
+    --#{$prefix}pagination-color: var(--#{$prefix}dark);
+
+    --#{$prefix}pagination-padding-y: .5rem;
+    --#{$prefix}pagination-padding-x: 1rem;
+        
+    gap: 12px;
+
+    .page { 
+        
+        &-link { 
+            font-weight: $font-weight-semibold;
+            border-radius: var(--#{$prefix}border-radius);
+
+            &:focus { 
+                --#{$prefix}pagination-border-color: var(--#{$prefix}primary);
+            }
+            
+        }
+
+    }
+}

@@ -1,0 +1,10 @@
+.nl-contact {
+    &-box {
+        &.with-transparent {
+            background-color: $white;
+        }
+    }
+    &-content {
+        padding: $contact-box-content-padding;
+    }
+}

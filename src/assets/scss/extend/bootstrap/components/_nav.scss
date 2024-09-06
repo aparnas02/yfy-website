@@ -1,0 +1,12 @@
+
+.nav { 
+
+   --#{$prefix}nav-link-color: var(--#{$prefix}dark);
+   --#{$prefix}nav-link-font-size: var(--#{$prefix}fs-7);
+
+    &-pills { 
+      --#{$prefix}nav-pills-link-active-bg: var(--#{$prefix}primary); 
+    }
+    
+  }
+  

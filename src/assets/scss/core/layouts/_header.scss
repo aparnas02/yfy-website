@@ -1,0 +1,269 @@
+.#{$prefix}header {
+
+    --#{$prefix}navbar-bg-color: var(--#{$prefix}white);    
+    --#{$prefix}navbar-bg-active-color: var(--#{$prefix}white);   
+    
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    position: fixed;
+    transition: padding 0.2s linear;
+
+    &.has-fixed {    
+        .navbar { 
+
+            --#{$prefix}navbar-box-shadow-active: var(--#{$prefix}box-shadow-sm);    
+
+            background-color:  var(--#{$prefix}navbar-bg-active-color);
+
+            &-nav { 
+                --#{$prefix}nav-link-padding-y: 18px;
+            }
+        }
+    }
+
+    .navbar { 
+        --#{$prefix}navbar-padding-y: 16px;
+        --#{$prefix}navbar-box-shadow-active: null;    
+        --#{$prefix}navbar-color: var(--#{$prefix}dark);    
+ 
+        --#{$prefix}navbar-brand-color: null;
+        --#{$prefix}navbar-brand-hover-color: null;
+
+        --#{$prefix}navbar-brand-padding-x: 0px;    
+        --#{$prefix}navbar-brand-padding-y: 0px;
+        --#{$prefix}navbar-brand-margin-end: 0px;
+        --#{$prefix}navbar-brand-font-size: null;
+        
+        --#{$prefix}navbar-nav-link-padding-x: 12px;
+        --#{$prefix}navbar-toggler-padding-y: .375rem;
+        --#{$prefix}navbar-toggler-border-radius: .5rem;
+        --#{$prefix}navbar-toggle-bg-color: transparent;
+        --#{$prefix}navbar-toggle-icon-color: #{$navbar-light-icon-color};
+        --#{$prefix}navbar-toggle-box-shadow: var(--#{$prefix}primary-focus-box-shadow);
+
+        @include media-breakpoint-up(lg) { 
+            --#{$prefix}navbar-padding-y: 6px;
+        }
+
+        background-color: var(--#{$prefix}navbar-bg-color);
+        box-shadow: var(--#{$prefix}navbar-box-shadow-active);
+
+        &-toggler { 
+            background-color: var(--#{$prefix}navbar-toggle-bg-color);
+
+            &:hover { 
+                --#{$prefix}navbar-toggle-icon-color: var(--#{$prefix}white);
+                --#{$prefix}navbar-toggler-border-color: var(--#{$prefix}primary);
+                --#{$prefix}navbar-toggle-bg-color: var(--#{$prefix}primary-soft);
+
+                box-shadow: var(--#{$prefix}navbar-toggle-box-shadow);
+            }
+
+            &:focus { 
+                box-shadow: none;
+            }
+
+        }
+
+        &-nav { 
+            --#{$prefix}nav-link-padding-y: 24px;
+            --#{$prefix}nav-link-padding-x: 12px;
+
+            --#{$prefix}nav-link-font-size: 1rem;
+            --#{$prefix}nav-link-font-weight: #{$font-weight-semibold};
+
+            justify-content: center;
+
+            .nav { 
+                &-item {
+                    position: relative;
+                    &:hover {
+
+                        .nav-toggle::after { 
+
+                            transform: translateY(2px);
+                        }
+
+                        > .navbar-sub {
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(0);
+                        }
+                    
+                    }
+                }
+                
+                &-link { 
+                    transition: all 0.2s linear;
+
+
+                    &.nav-toggle  {
+                        gap: 4px;
+                        display: flex;
+                        position: relative;
+                        align-items: center;
+
+                        &::after { 
+                            content: "\e9c5";
+                            font-family: $nio-font-family;
+                            transition: all 0.1s linear;
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
+        &-sub {
+            --#{$prefix}navbar-sub-padding: 12px;
+            --#{$prefix}navbar-sub-shadow: var(--#{$prefix}box-shadow);
+            --#{$prefix}navbar-sub-bg-color: var(--#{$prefix}white);
+            --#{$prefix}navbabr-sub-border-radius: var(--#{$prefix}border-radius);
+            --#{$prefix}navbar-sub-border: 1px solid var(--#{$prefix}border-color);
+
+            --#{$prefix}navbar-sub-item-padding: 12px;
+            --#{$prefix}navbar-sub-item-bg-color: null;
+            --#{$prefix}navbar-sub-item-hover-bg-color: var(--#{$prefix}primary-soft);
+            
+            --#{$prefix}navbar-sub-item-title-fs: var(--#{$prefix}fs-7);
+            --#{$prefix}navbar-sub-item-title-color: var(--#{$prefix}dark);
+            --#{$prefix}navbar-sub-item-title-hover-color: var(--#{$prefix}navbar-sub-item-title-color);
+
+            --#{$prefix}navbar-sub-item-subtitle-fs: var(--#{$prefix}fs-9);
+            --#{$prefix}navbar-sub-item-subtitle-color: var(--#{$prefix}body-color);
+            --#{$prefix}navbar-sub-item-subtitle-hover-color: var(--#{$prefix}navbar-sub-item-subtitle-color);
+
+            top: 100%;
+            opacity: 0;
+            left: -165px;
+            width: 890px;
+            transition: 0.2s;
+            position: absolute;
+            visibility: hidden;
+            transform: translateY(5px);
+            border: var(--#{$prefix}navbar-sub-border);
+            padding: var(--#{$prefix}navbar-sub-padding);
+            background-color: var(--#{$prefix}navbar-sub-bg-color);
+            border-radius: var(--#{$prefix}navbabr-sub-border-radius);
+            
+            &-item { 
+                gap: .75rem;
+                display: flex;
+                position: relative;
+                align-items: center;
+                transition: all 0.2s linear;
+                border-radius: var(--#{$prefix}border-radius);
+                padding: var(--#{$prefix}navbar-sub-item-padding);
+                background-color: var(--#{$prefix}navbar-sub-item-bg-color);
+
+                &:hover,
+                &.active { 
+
+                    --#{$prefix}navbar-sub-item-title-color : var(--#{$prefix}navbar-sub-item-title-hover-color); 
+
+                    --#{$prefix}navbar-sub-item-subtitle-color: var(--#{$prefix}navbar-sub-item-subtitle-hover-color);
+
+                    background-color: var(--#{$prefix}navbar-sub-item-hover-bg-color);
+                    
+                }
+
+            }
+
+            &-title,
+            &-subtitle { 
+                display: block;
+                text-transform: capitalize;
+            }
+
+            &-title { 
+                font-weight: $font-weight-semibold;
+                color: var(--#{$prefix}navbar-sub-item-title-color);
+                font-size: var(--#{$prefix}navbar-sub-item-title-fs);
+                
+            }
+
+
+            &-subtitle { 
+                color: var(--#{$prefix}navbar-sub-item-subtitle-color);
+                font-size: var(--#{$prefix}navbar-sub-item-subtitle-fs);
+            }
+
+        }
+    }
+}
+
+.layout-3,
+.layout-4,
+.layout-6,
+.layout-7,
+.layout-9,
+.layout-10,
+.layout-11,
+.layout-13,
+.layout-15,
+.layout-16,
+.layout-18, 
+.layout-19,
+.layout-20,
+.layout-21,
+.layout-22 { 
+    .nl-header { 
+        --#{$prefix}navbar-bg-color: transparent;
+    }
+}
+
+
+.layout-6,
+.layout-7,
+.layout-9,
+.layout-10,
+.layout-11,
+.layout-13,
+.layout-15,
+.layout-20,
+.layout-21,
+.layout-22 { 
+    .nl-header { 
+        .navbar { 
+            --#{$prefix}navbar-color: var(--#{$prefix}white);
+            --#{$prefix}navbar-hover-color: var(--#{$prefix}primary);
+            --#{$prefix}navbar-bg-active-color: var(--#{$prefix}dark);            
+            --#{$prefix}navbar-toggle-bg-color: var(--#{$prefix}white);
+
+            &-sub { 
+                --#{$prefix}navbar-sub-border: null;
+                --#{$prefix}navbar-sub-bg-color: var(--#{$prefix}dark);
+                --#{$prefix}navbar-sub-item-title-color: var(--#{$prefix}white);
+                --#{$prefix}navbar-sub-item-title-hover-color: var(--#{$prefix}dark);
+            }
+        }
+    }
+}
+
+.layout-7,
+.layout-22 {  
+    .nl-header { 
+        .navbar { 
+            --#{$prefix}navbar-bg-active-color: var(--#{$prefix}blue-800);            
+
+            &-sub { 
+                --#{$prefix}navbar-sub-bg-color: var(--#{$prefix}blue-800);
+            }
+        }
+    }
+}
+
+.layout-9 { 
+    .nl-header { 
+        .navbar { 
+            &-sub { 
+                --#{$prefix}navbar-sub-item-subtitle-hover-color: var(
+                    --#{$prefix}gray-700);
+            }
+        }
+    }
+}

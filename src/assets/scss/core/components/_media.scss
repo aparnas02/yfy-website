@@ -1,0 +1,79 @@
+@use "sass:math";
+
+.#{$prefix}media {
+    --#{$prefix}media-bg-color: null;
+
+    --#{$prefix}media-text-color: null;
+    --#{$prefix}media-fs: var(--#{$prefix}fs-5);
+
+    --#{$prefix}media-overflow: hidden;
+    --#{$prefix}media-position: relative;
+
+    --#{$prefix}media-width: 3rem;
+    --#{$prefix}media-height: 3rem;
+
+    --#{$prefix}media-size: 3rem;
+
+    --#{$prefix}media-border-size: 1px;
+    --#{$prefix}media-border-color: var(--#{$prefix}border-color);
+
+    --#{$prefix}media-border-radius: var(--#{$prefix}border-radius);
+
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--#{$prefix}media-text-color);
+    overflow: var(--#{$prefix}media-overflow);
+    position: var(--#{$prefix}media-position);
+    width: var(--#{$prefix}media-width) !important;
+    height: var(--#{$prefix}media-height) !important;
+    background: var(--#{$prefix}media-bg-color);
+    border-radius: var(--#{$prefix}media-border-radius);
+
+    & > img {
+        width: 100%;
+        height: 100%;
+    }
+
+    & > span {
+        font-weight: $font-weight-bold;
+        font-size: var(--#{$prefix}media-fs);
+    }
+
+    & > .icon {
+        font-size: var(--#{$prefix}media-fs);
+    }
+
+    @each $size, $value in $nl-sizes {
+        &-#{$size} {
+            --#{$prefix}media-width: #{$value};
+            --#{$prefix}media-height: #{$value};
+            --#{$prefix}media-fs: calc(#{$value} / 2.5);
+        }
+    }
+
+    @each $color, $value in $theme-colors {
+        &-#{$color} {
+            --#{$prefix}media-text-color: #fff;
+            --#{$prefix}media-bg-color: #{$value};
+        }
+
+        &-#{$color}-soft {
+            --#{$prefix}media-text-color: #{$value};
+            --#{$prefix}media-bg-color: #{mix($value, white, 20%)};
+        }
+    }
+
+
+    &-primary {
+        --#{$prefix}media-bg-color: var(--#{$prefix}primary);
+    }
+
+    &-primary-soft {
+         --#{$prefix}media-text-color: var(--#{$prefix}primary);
+         --#{$prefix}media-bg-color: var(--#{$prefix}primary-soft);
+     }
+
+}

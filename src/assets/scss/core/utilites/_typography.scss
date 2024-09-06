@@ -1,0 +1,6 @@
+@each $size, $value in $font-sizes {
+  .fs-#{$size} {
+    --#{$prefix}font-size: #{$value};
+    font-size: var(--#{$prefix}font-size) !important;
+  }
+}

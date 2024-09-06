@@ -1,0 +1,26 @@
+.card {
+
+    &-title {
+        font-weight: $font-weight-bold;
+    }
+}
+
+
+.layout { 
+    
+    &-9 { 
+        .card { 
+            --#{$prefix}card-border-width: 0px;
+            --#{$prefix}card-bg: #{$gray-800};
+        }
+    }
+
+    
+    &-16 { 
+        .card { 
+            --#{$prefix}card-border-radius: 1rem            
+        }
+    }
+
+}
+

@@ -1,0 +1,142 @@
+.form-control {
+    --#{$prefix}input-color: #{$input-color};
+    --#{$prefix}input-focus-color: var(--#{$prefix}input-color);
+
+    --#{$prefix}input-padding-x: #{$input-btn-padding-x};
+    --#{$prefix}input-padding-y: #{$input-btn-padding-y};
+
+    --#{$prefix}input-placeholder-color: #{$gray-700};
+
+    --#{$prefix}input-placeholder-line-height: 1.5;
+    --#{$prefix}input-placeholder-font-size: .875rem;
+    --#{$prefix}input-placeholder-font-weight: #{$font-weight-normal};
+
+    color: var(--#{$prefix}input-color);
+    padding: var(--#{$prefix}input-padding-y) var(--#{$prefix}input-padding-x);
+
+
+    &.is-invalid { 
+        &[type="password"],
+        &[name="password"] { 
+            
+            background-image: none;
+
+            & + .form-control-icon .icon { 
+                color: var(--#{$prefix}form-invalid-color) !important;
+            }
+
+            & + .form-control-icon { 
+                top: calc(50% - 10px);
+            }
+        }
+    }
+
+    // field state
+    &:focus {
+        border-color: var(--#{$prefix}primary);
+        color: var(--#{$prefix}input-focus-color);
+        box-shadow: var(--#{$prefix}primary-focus-box-shadow);
+    }
+
+    &::placeholder { 
+        text-transform: capitalize;
+        color: var(--#{$prefix}input-placeholder-color);
+        font-size: var(--#{$prefix}input-placeholder-font-size);
+        font-weight: var(--#{$prefix}input-placeholder-font-weight);
+        line-height: var(--#{$prefix}input-placeholder-line-height);
+    }
+
+    &-icon { 
+    
+        --#{$prefix}form-control-icon-position-x-start: 14px;
+
+        top: 50%;
+        cursor: pointer;
+        position: absolute;
+        transform: translateY(-50%);
+        transition: all 0.1s linear;
+        left: var(--#{$prefix}form-control-icon-position-x-start);
+
+        .icon { 
+            font-size: var(--#{$prefix}fs-5);
+        }
+
+        & + input { 
+            padding-left: $input-height-inner;
+        }
+
+        &.after { 
+            left: auto;
+            right: var(--#{$prefix}form-control-icon-position-x-start);
+        }
+
+    }
+    
+    // sizes 
+    &-lg { 
+        --#{$prefix}input-padding-x: 24px;
+        --#{$prefix}input-padding-y: 24px;
+        
+        font-size: 1rem;
+    }
+
+}
+
+
+
+.layout { 
+    
+    &-4 { 
+        .form-control { 
+
+        --#{$prefix}input-padding-x: 1rem;
+        --#{$prefix}input-padding-y: .75rem;
+    
+        }
+    }
+
+    &-5 { 
+        .form-control { 
+            --#{$prefix}input-padding-x: 1rem;
+            --#{$prefix}input-padding-y: .75rem;
+            --#{$prefix}border-color: var(--#{$prefix}dark);
+        }
+    }
+    
+
+    &-8,
+    &-12,
+    &-15,
+    &-16 { 
+        .form-control { 
+            --#{$prefix}input-padding-x: 1.25rem;
+            --#{$prefix}input-padding-y: 1.25rem;
+        }
+    }
+    
+
+    &-17,
+    &-20,
+    &-21 { 
+        .form-control { 
+            --#{$prefix}input-padding-y: 1.5rem;
+            --#{$prefix}input-padding-x: 1.375rem;
+        }
+    }
+
+    &-17 { 
+        .form-control { 
+            --#{$prefix}border-radius: 0px;
+            --#{$prefix}input-placeholder-color: #{$dark};
+            --#{$prefix}input-placeholder-font-weight: #{$font-weight-semibold};
+        }
+    }
+
+    &-23 { 
+        .form-control { 
+            --#{$prefix}border-color: var(--#{$prefix}dark);
+        }
+    }
+
+
+}

@@ -1,0 +1,8 @@
+.dropdown {
+    &-header {
+        font-weight: $font-weight-medium;
+    }
+    &-menu {
+        box-shadow: $dropdown-box-shadow;
+    }
+}

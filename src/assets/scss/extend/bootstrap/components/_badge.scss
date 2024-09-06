@@ -1,0 +1,28 @@
+
+.badge { 
+
+    --#{$prefix}badge-padding-x: 1rem;
+    --#{$prefix}badge-padding-y: 8px;
+
+}
+
+
+.layout {
+    
+
+    &-2 { 
+        .badge {
+            --#{$prefix}badge-padding-y: 0.5rem;
+            --#{$prefix}badge-border-radius: 0.75rem;
+            --#{$prefix}badge-font-weight: #{$font-weight-semibold};
+        }
+    }
+
+    &-3 { 
+        .badge {
+            --#{$prefix}badge-padding-y: 0.5rem;
+
+            --#{$prefix}badge-font-size: 0.875rem;
+        }
+    }
+}

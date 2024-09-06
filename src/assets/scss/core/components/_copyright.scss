@@ -1,0 +1,20 @@
+.nl-copyright-text {
+    p {
+        color: $body-color;
+        a {
+            color: inherit;
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+}
+
+.nl-footer-bottom {
+    .nl-list-link li a {
+        color: $body-color;
+        &:hover {
+            color: $primary;
+        }
+    }
+}

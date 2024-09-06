@@ -1,0 +1,24 @@
+.breadcrumb{
+    
+    --#{$prefix}breadcrumb-divider-color: var(--#{$prefix}dark);
+    --#{$prefix}breadcrumb-item-active-color: var(--#{$prefix}dark);
+
+    &-item{
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        line-height: 1.12;
+    }
+
+    &-arrow{
+        .breadcrumb-item {
+            + .breadcrumb-item{
+                &::before{
+                    padding-top: 1px;
+                    content: $ni-chevron-right;
+                    font-family: $nio-font-family;
+                }
+            }
+        }
+    }
+}

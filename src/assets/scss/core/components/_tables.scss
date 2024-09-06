@@ -1,0 +1,33 @@
+
+
+.tb-col {
+    &-end,
+    &-action {
+        text-align: right;
+    }
+    &-middle {
+        vertical-align: middle;
+    }
+}
+
+.nl-table {
+    &-crypto {
+        tbody {
+            tr {
+                &:nth-last-child(1) {
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+
+
+.layout { 
+    &-9 { 
+        .table { 
+            --#{$prefix}table-bg: #{$gray-800};
+        }
+    }
+}

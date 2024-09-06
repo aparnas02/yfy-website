@@ -1,0 +1,28 @@
+.nl-tag {
+    display: flex;
+    margin: -0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    > * {
+        padding: 0.5rem;
+    }
+    &-item {
+        display: block;
+        font-size: .875rem;
+        padding: .5rem 1rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--#{$prefix}dark);
+        font-weight: $font-weight-semibold;
+        background-color: var(--#{$prefix}gray-400);
+        border: 1px solid var(--#{$prefix}border-color);
+        border-radius: var(--#{$prefix}border-radius-pill);
+
+        &:hover {
+            color: var(--#{$prefix}white);
+            border-color: var(--#{$prefix}primary);
+            background-color: var(--#{$prefix}primary);
+        }
+
+    }
+}

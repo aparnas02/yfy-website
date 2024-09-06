@@ -1,0 +1,23 @@
+.btn-close { 
+  --#{$prefix}nl-btn-width: null;
+  --#{$prefix}nl-btn-height: null;
+
+  --#{$prefix}btn-close-bg: none;
+  --#{$prefix}btn-close-icon: "\ea06";
+  --#{$prefix}btn-close-icon-color: #{$dark};
+  --#{$prefix}btn-close-icon-size: var(--#{$prefix}fs-3);
+  --#{$prefix}btn-close-icon-font-family: #{$nio-font-family};
+
+  position: relative;
+  width: var(--#{$prefix}nl-btn-width);
+  height: var(--#{$prefix}nl-btn-height);
+  background: var(--#{$prefix}btn-close-bg);
+
+  &::before { 
+    content: var(--#{$prefix}btn-close-icon);
+    color: var(--#{$prefix}btn-close-icon-color);
+    font-size: var(--#{$prefix}btn-close-icon-size);
+    font-family: var(--#{$prefix}btn-close-icon-font-family);
+  }
+
+}

@@ -1,0 +1,773 @@
+@use "sass:map";
+@use "sass:math";
+@import "../../../node_modules/bootstrap/scss/functions";
+
+@function override-map-value($map, $key, $value) {
+  $map: map-merge(
+    $map,
+    (
+      $key: $value
+    )
+  );
+  @return $map;
+}
+
+@function add-to-map($map, $key, $color, $position: end) {
+  // Create a new map with the new key-value pair
+  $new-pair: (
+    (
+      "#{$key}": $color
+    )
+  );
+
+  // If position is 'start', add the new pair to the beginning of the map
+  @if $position == start {
+    @return map-merge($new-pair, $map);
+  }
+  // If position is 'end', add the new pair to the end of the map
+  @else if $position == end {
+    @return map-merge($map, $new-pair);
+  }
+}
+
+// 2. Include any default variables overrides here
+
+// BS ( bootstrap ) global style configs
+$enable-negative-margins: true;
+
+/********************************************
+
+  ## PREFIX FOR :ROOT CSS VARIABLES ##
+
+ *********************************************/
+
+$variable-prefix: nl-; // Deprecated in v5.2.0 for the shorter `$prefix`
+$prefix: $variable-prefix;
+
+/////////    COLORS    ///////////
+//////////////////////////////////////
+
+// BS ( bootstrap )  gray-color-variables
+
+$white: #fff;
+$gray-100: #f4f8ff;
+$gray-200: #faf9ff;
+$gray-300: #e5e7eb;
+$gray-400: #f7f8f9;
+$gray-500: #c9c9d4;
+$gray-600: #c5c5ca;
+$gray-700: #000;
+$gray-800: #181921;
+$gray-900: #0f0f12;
+$black: #000;
+
+// BS ( bootstrap ) color-variables
+$gray: $gray-400;
+
+$blue-100: #eaefff;
+$blue-400: #589bff;
+$blue-500: #59276d;
+$blue-600: #3f78e0;
+$blue-700: #10045e;
+$blue-800: #141834;
+$blue-900: #0a1425;
+$blue: $blue-500;
+
+$indigo-100: #e1cbfd;
+$indigo-500: #6576ff;
+$indigo: $indigo-500;
+$indigo-600: #6366f1;
+$indigo-700: #3f53d8;
+
+$red-100: #feebed;
+$red-200: #ffc8cc;
+$red-500: #fa5b68;
+$red: $red-500;
+
+$purple-100: #eeecff;
+$purple-200: #e8ebff;
+$purple-300: #c3c9f1;
+$purple-400: #9097f7;
+$purple-500: #725efe;
+$purple: $purple-500;
+$purple-700: #3b3482;
+
+$pink-100: #fceff4;
+$pink-500: #eb7ca6;
+$pink: $pink-500;
+
+$cyan-100: #e7fbff;
+$cyan-200: #c0f2fd;
+$cyan-300: #97f2ff;
+$cyan-500: #13d5ff;
+$cyan-600: #54a8c7;
+$cyan: $cyan-500;
+
+$teal-100: #f0f6f5;
+$teal-500: #00ffd5;
+$teal-600: #45c9c1;
+$teal-700: #763491;
+$teal-900: #143334;
+$teal: $teal-500;
+
+$green-100: #dcfce7;
+$green-200: #bde5d3;
+$green-500: #0acf83;
+$green-600: #22c55e;
+$green-800: #0b2925;
+$green: $green-600;
+
+$yellow-100: #fdeaba;
+$yellow-400: #FFDE70;
+$yellow-500: #fdb52a;
+$yellow: $yellow-500;
+
+$orange-200: #fdd6c8;
+$orange: #fd7e14;
+
+$dark: $blue-900;
+
+// BS ( bootstrap ) scss theme-color variables
+$primary: $blue;
+$secondary: $gray-700;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $blue-900;
+
+$body-bg: $white;
+$body-color: $gray-700;
+
+$lighter: $gray-300;
+$gray-light: $gray-500;
+
+// gradients
+$gradient-1: linear-gradient(214.72deg, #0c073f 20.47%, #130b6a 78.66%);
+$gradient-2: linear-gradient(157.5deg, #120183 14.64%, #0066ff 114.76%);
+$gradient-3: linear-gradient(180deg, #4628ff 0%, #6d55ff 100%);
+$gradient-4: linear-gradient(269.03deg, rgba(114, 94, 254, 0) 0%, #725efe 49.86%, rgba(114, 94, 254, 0) 99.72%);
+$gradient-5: linear-gradient(180deg, #fa5b68 0%, #725efe 100%);
+$gradient-6: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+$gradient-7: linear-gradient(180deg, #6576ff 0%, rgba(255, 255, 255, 0) 100%);
+$gradient-8: linear-gradient(140.41deg, #8d66db 27.37%, #4d73f3 72.63%);
+$gradient-9: linear-gradient(23.01deg, #1d3faf 14.9%, #8d66db 85.1%);
+$gradient-10: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 86.98%);
+$gradient-11: linear-gradient(180deg, #3f53d8 0%, #8c9bff 100%);
+$gradient-12: linear-gradient(180deg, #589bff 0%, #fa5b68 100%);
+$gradient-13: linear-gradient(180deg, #e3edff 0%, rgba(255, 255, 255, 0) 100%);
+$gradient-14: linear-gradient(180deg, #97f2ff 0%, rgba(151, 242, 255, 0) 100%);
+$gradient-15: linear-gradient(180deg, #0acf83 0%, rgba(10, 207, 131, 0) 0.01%, rgba(10, 207, 131, 0.16) 100%);
+$gradient-16: linear-gradient(180deg, #0a1425 0%, #0a1425 0.01%, #1c2d4f 100%);
+$gradient-17: linear-gradient(180deg, #feebed -0.03%, #ffc7cb 99.93%);
+$gradient-18: linear-gradient(0deg, rgba(59, 52, 130, 0) 0%, #3b3482 72.97%);
+$gradient-19: linear-gradient(180deg, #217ea0 0%, #54a8c7 100%);
+$gradient-20: linear-gradient(90deg, #9097f7 0%, #64a2f9 100%);
+$gradient-21: linear-gradient(208.41deg, #8c9dff 0%, #a89bfb 39.92%, #7ec9ff 82.42%);
+$gradient-22: linear-gradient(276.37deg, #5cc1ff 5.91%, #6754f3 50.33%, #c4b9ff 94.75%);
+$gradient-23: linear-gradient(276.7deg, #d627af 4.7%, #fd7258 55.39%);
+$gradient-24: linear-gradient(276.86deg, #65d995 4.93%, #30a390 41.37%);
+$gradient-25: linear-gradient(147.84deg, #faf9f4 42.86%, rgba(190, 247, 252, 0.1) 102.04%);
+$gradient-26: linear-gradient(98.64deg, #524a90 0%, rgba(255, 116, 104, 0.21) 57.39%);
+$gradient-27: linear-gradient(180deg, rgba(255, 255, 255, 0.24) -0.02%, rgba(152, 151, 226, 0.24) 52.6%, #b6e3ff 100%);
+$gradient-28: linear-gradient(
+  101.8deg,
+  rgba(199, 204, 255, 0.9) 0%,
+  rgba(211, 216, 255, 0.9) 50%,
+  rgba(191, 198, 255, 0.9) 100%
+);
+
+// // primary gradient
+$bg-primary-gradient: $gradient-9;
+$bg-primary-gradient-soft: $gradient-13;
+
+$theme-gradient-colors: (
+  "1": $gradient-1,
+  "2": $gradient-2,
+  "3": $gradient-3,
+  "4": $gradient-4,
+  "5": $gradient-5,
+  "6": $gradient-6,
+  "7": $gradient-7,
+  "8": $gradient-8,
+  "9": $gradient-9,
+  "10": $gradient-10,
+  "11": $gradient-11,
+  "12": $gradient-12,
+  "13": $gradient-13,
+  "14": $gradient-14,
+  "15": $gradient-15,
+  "16": $gradient-16,
+  "17": $gradient-17,
+  "18": $gradient-18,
+  "19": $gradient-19,
+  "20": $gradient-20,
+  "21": $gradient-21,
+  "22": $gradient-22,
+  "23": $gradient-23,
+  "24": $gradient-24,
+  "25": $gradient-25,
+  "26": $gradient-26,
+  "27": $gradient-27
+);
+
+
+/////////    TYPOGRAPHY    //////////
+//////////////////////////////////////
+$font-family-sans-serif: "Inter", sans-serif;
+$font-family-sans-serif-secondary: "Inter", sans-serif;
+
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.875;
+$font-size-lg: $font-size-base * 1.25;
+
+// $body-font-weight: 400;
+
+$line-height-base: 1.5;
+
+// override bootstrap font weight
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$font-weight-base: $font-weight-normal;
+
+$h1-font-size: 3rem;
+$h2-font-size: 2.5rem;
+$h3-font-size: 2rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1.125rem;
+
+$lead-font-size: 1.25rem;
+
+// overrides bs ( bootstrap ) heading-variables
+$headings-font-weight: $font-weight-bold;
+$headings-color: $dark;
+
+// scss-docs-start display-headings
+
+$display-font-weight: $font-weight-bold;
+$display-line-height: 1.25;
+
+// text
+
+$sub-text-color: $body-color;
+$sub-text-font-size: 0.75rem;
+$sub-text-font-weight: $font-weight-medium;
+
+// BS ( bootstrap ) styleanchor elements
+$link-decoration: none;
+
+// borders
+$border-width: 1px;
+$hr-border-width: $border-width;
+
+$border-color: $gray-300;
+$border-light: $gray-100;
+
+$hr-border-color: $border-color;
+
+// border radius
+$border-radius: 0.5rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.5rem;
+$border-radius-2xl: 2rem;
+$border-radius-pill: 50rem;
+
+// sizes
+$nl-sizes: (
+  "xs": 2rem,
+  "sm": 2.5rem,
+  "md": 3rem,
+  "lg": 3.5rem,
+  "xl": 4rem,
+  "xxl": 5rem,
+  "2xl": 6.25rem,
+  "3xl": 18.75rem
+);
+
+////////// GAP /////////
+$grid-gutter-width: 1.875rem;
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.375,
+  2: $spacer * 0.75,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 1.875,
+  6: $spacer * 3,
+  7: $spacer * 3.75,
+  8: $spacer * 5,
+  9: $spacer * 7,
+  "gs": $grid-gutter-width
+);
+
+// Rotate
+$rotate-0: 0deg;
+$rotate-45: 45deg;
+$rotate-90: 90deg;
+$rotate-180: 180deg;
+
+$rotates: (
+  0: $rotate-0,
+  45: $rotate-45,
+  90: $rotate-90,
+  180: $rotate-180
+);
+
+// Reboot
+$hr-opacity: 1;
+$hr-border-color: $border-color;
+$hr-border-width: $border-width;
+
+////////// MEDIA  /////////
+$media-border-radius: 0.5rem;
+$media-border-radius-xl: 1.5rem;
+$media-border-color: $border-light;
+$media-negative-start-gap: 0.75rem;
+
+// box shadow variables
+$box-shadow-xl:
+  4px 4px 36px 0px #c0c0c029,
+  -4px -4px 36px 0px #c0c0c01f;
+
+
+  // Navbar
+  $navbar-light-icon-color: $dark;
+
+
+
+
+
+/////////   LIST    //////////
+//////////////////////////////////////
+$list-meta-item-gap-x: 1.5rem;
+
+/////////   TESTIMONIAL   //////////
+//////////////////////////////////////
+$testimonial-card-bg: $gray-500;
+$testimonial-card-border: 0px solid #faf9ff;
+$testimonial-card-box-shadow:
+  -4px -4px 36px rgba(192, 192, 192, 0.12),
+  4px 4px 36px rgba(192, 192, 192, 0.16);
+$testimonial-card-icon-font-size: 5.25rem;
+$testimonial-card-icon-background-color: linear-gradient(180deg, #3f53d8 0%, #8c9bff 100%);
+
+// testimonial s1
+$testimonial-card-s1-cover-radius: 0.75rem;
+$testimonial-card-s1-quote-icon-color: linear-gradient(180deg, #3f53d8 0%, #8c9bff 100%);
+$testimonial-card-s1-bg: $indigo-600;
+$testimonial-card-s1-theme-color: $white;
+
+/////////    SWIPER    //////////
+//////////////////////////////////////
+$swiper-navigation-font-size: 1.75rem;
+$swiper-navigation-width: 3.375rem;
+$swiper-navigation-height: 3.375rem;
+$swiper-navigation-border-radius: $border-radius-pill;
+$swiper-navigation-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+$swiper-navigation-color: $body-color;
+$swiper-navigation-bg: $white;
+$swiper-navigation-hover-bg: $primary;
+$swiper-navigation-hover-color: $white;
+
+$swiper-navigation-has-bg: #faf9ff;
+$swiper-navigation-has-color: $body-color;
+
+$swiper-pagination-bullet-width: 12px;
+$swiper-pagination-bullet-height: 12px;
+$swiper-pagination-bullet-inactive-color: $body-color;
+$swiper-pagination-bullet-active-color: $primary;
+$swiper-pagination-bullet-opacity: 0.2;
+$swiper-pagination-bullet-active-opacity: 1;
+
+// theme colors
+$swiper-pagination-bullet-inactive-color-on-theme: $gray-500;
+$swiper-pagination-bullet-active-color-on-theme: $indigo-600;
+
+$swiper-navigation-has-bg-on-theme: rgba($white, 0.2);
+$swiper-navigation-has-color-on-theme: $white;
+$swiper-navigation-has-bg-on-theme-hover-bg: $white;
+$swiper-navigation-has-bg-on-theme-hover-color: $body-color;
+
+// swiper pagination s1
+$swiper-pagination-s1-bullet-width: 48px;
+$swiper-pagination-s1-bullet-height: 4px;
+$swiper-pagination-s1-bullet-border-radius: 2px;
+$swiper-pagination-s1-bullet-active-color: $primary;
+$swiper-pagination-s1-bullet-inactive-color: $lighter;
+
+// BS ( bootstrap ) btn-variables
+$btn-font-weight: 600;
+
+/////////    INPUT BTN    //////////
+//////////////////////////////////////
+$input-color: $dark;
+$input-btn-padding-y: 0.75rem;
+$input-btn-padding-x: 1.5rem;
+$input-placeholder-color: $gray-700;
+$input-btn-font-family: var(--#{$prefix}body-font-family);
+
+$textarea-height: 210px;
+
+/////////   CARD    //////////
+//////////////////////////////////////
+$card-bg: $white;
+
+$card-spacer-y: 1.875rem;
+$card-spacer-x: 1.875rem;
+
+$card-border-color: $border-color;
+
+
+/////////   BADGE    //////////
+//////////////////////////////////////
+$badge-font-size: 0.75rem;
+$badge-padding-y: 0.25rem;
+$badge-padding-x: 0.75rem;
+$badge-font-weight: $font-weight-medium;
+
+
+/////////   LAYOUTS    //////////
+//////////////////////////////////////
+
+// header
+$header-main-border: $border-light;
+
+// logo
+// $logo-gap: 0.375rem;
+$navbar-overlay: rgba(#495057, 0.4);
+
+// menu link
+$menu-link-color: $body-color;
+$menu-link-gap-y: 0.625rem;
+$menu-link-gap-y-lg: 1.5rem;
+$menu-link-gap-x: 1rem;
+
+$menu-sub-sub-gap-x: 1.5rem;
+$menu-sub-link-color: $body-color;
+$menu-sub-link-font-size: 0.875rem;
+$menu-sub-link-fw: 600;
+$menu-sub-link-line-height: 1.6;
+$menu-sub-link-hover-color: $primary;
+$menu-sub-link-hover-bg: rgba($primary, 0.1);
+
+/////////  SCHEDULE    //////////
+//////////////////////////////////////
+$schedule-content-gap: 1rem;
+$schedule-item-gap-y: 0.25rem;
+$schedule-item-inner-gap: 1.25rem;
+$schedule-symbol-before-bg: $primary;
+$schedule-symbol-before-opacity: 0.4;
+
+// schedule s1
+$schedule-s1-border: 1px solid $border-light;
+$schedule-s1-content-gap: 3rem;
+$schedule-s1-item-gap-y: 1.875rem;
+$schedule-s1-symbol-negative-gap: 2rem;
+
+// schedule s2
+$schedule-s2-item-gap-y: 3rem;
+$schedule-s2-content-gap: 2rem;
+$schedule-s2-item-after-border: 2px dashed $primary;
+$schedule-s2-item-after-opaticy: 0.3;
+$schedule-s2-item-after-left: 22px;
+$schedule-s2-symbol-margin-y: 34px;
+
+/////////  NAV    //////////
+//////////////////////////////////////
+$nav-link-padding-y: 0.5rem;
+$nav-link-padding-x: 1rem;
+$nav-link-font-weight: $font-weight-medium;
+
+/////////  DROPDOWN    //////////
+//////////////////////////////////////
+
+$dropdown-font-size: 0.875rem;
+$dropdown-bg: $white;
+
+$dropdown-link-disabled-color: $gray-500;
+
+$dropdown-item-padding-y: 0.375rem;
+
+$dropdown-header-color: $body-color;
+
+/////////   FORM CHECK    //////////
+//////////////////////////////////////
+$form-check-input-width: 1.25rem;
+$form-check-padding-start: $form-check-input-width;
+$form-check-btn-check-disabled-opacity: $gray-500;
+
+
+
+// scss-docs-start form-label-variables
+$form-label-margin-bottom: 1rem;
+$form-label-font-size: 1rem;
+$form-label-font-weight: 600;
+$form-label-color: $headings-color;
+// scss-docs-end form-label-variables
+
+
+// scss-docs-start form-feedback-variables
+$form-feedback-font-size: .75rem;
+
+/////////  BTN ZOOM    //////////
+//////////////////////////////////////
+$btn-zoom-bg: #faf9ff;
+$btn-zoom-width: 1.25rem;
+$btn-zoom-height: 1.25rem;
+
+
+/////////  COURSE    //////////
+//////////////////////////////////////
+$course-overview-class: "nl-course-overview";
+$course-overview-icon-color: $primary;
+$course-overview-icon-font-size: 1.125rem;
+$course-overview-title-color: $body-color;
+$course-overview-title-font-weight: 700;
+$course-overview-content-gap-x: 0.5rem;
+
+/////////  ACCORDION    //////////
+//////////////////////////////////////
+$accordion-body-padding-x: 30px;
+
+$accordion-button-padding-y: 1.875rem;
+$accordion-button-padding-x: 1.875rem;
+$accordion-button-active-bg: transparent;
+$accordion-button-focus-box-shadow: none;
+
+
+
+// contact
+$contact-box-bg: $gray-500;
+$contact-box-border: 1px solid #faf9ff;
+$contact-box-border-radius: 0.5rem;
+$contact-box-content-padding: 1.875rem;
+
+/////////  FORM CARD    //////////
+//////////////////////////////////////
+// $form-card-title-color: $body-color;
+$form-card-text-color: $body-color;
+
+$input-label-color: $body-color;
+$input-label-font-size: 1rem;
+$input-label-gap-y: 0.75rem;
+$input-label-font-weight: 600;
+
+/////////  TIMELINE GROUP   //////////
+//////////////////////////////////////
+$timeline-group-item-width: 25%;
+
+$timeline-group-item-after-bg: #faf9ff;
+$timeline-group-item-after-top: 2rem;
+$timeline-group-item-after-height: 1px;
+
+/////////  FORM CONTROL ICON   //////////
+//////////////////////////////////////
+$input-control-icon-gap-x: 1rem;
+$input-control-icon-input-control-x: 2.5rem;
+$input-control-icon-color: $body-color;
+
+
+/////////  FEATURE CARD   //////////
+//////////////////////////////////////
+$feature-card-bg: linear-gradient(180deg, #feebed -0.03%, #ffc7cb 99.93%);
+$feature-card-padding-y: 3.75rem;
+$feature-card-padding-x: 3.75rem;
+$feature-card-border-radius: 0.5rem;
+
+/////////  FEATURE CARD TEXT   //////////
+//////////////////////////////////////
+$feature-card-text-gap-x: 3.125rem;
+$feature-card-text-line-gap-x: 1.5rem;
+
+$feature-card-text-title-line-height: 1.5;
+
+$feature-card-text-line-after-width: 3px;
+$feature-card-text-line-after-border-radius: 0.25rem;
+$feature-card-text-line-1-bg: $primary;
+$feature-card-text-line-2-bg: $yellow;
+$feature-card-text-line-3-bg: $red;
+
+/////////  LIST DOT   //////////
+//////////////////////////////////////
+$list-dot-item-gap-y: 1.25rem;
+$list-dot-item-gap-x: 1.25rem;
+
+$list-dot-item-after-width: 6px;
+$list-dot-item-after-height: 6px;
+$list-dot-item-after-top: 12px;
+$list-dot-item-after-bg: #c9c9d4;
+$list-dot-item-after-border-radius: 50%;
+
+// list dot sm
+$list-dot-sm-item-gap-x: 0.75rem;
+$list-dot-sm-item-font-size: 0.875rem;
+$list-dot-sm-item-after-top: 20px;
+$list-dot-sm-item-after-width: 3px;
+$list-dot-sm-item-after-height: 3px;
+
+/////////  TABLES  //////////
+//////////////////////////////////////
+
+
+$table-border-factor: 0.1;
+$table-caption-color: $body-color;
+$table-border-color: $border-light;
+
+
+/////////  COMPARE PRICING  //////////
+//////////////////////////////////////
+$compare-padding-x: 2.5rem;
+$compare-col-width-lg: 600px;
+$compare-col-lead-font-size: 18px;
+$compare-col-lead-color: $body-color;
+$compare-head-col-padding-y: 3rem;
+
+
+/////////  PAGINATION S1  //////////
+//////////////////////////////////////
+$pagination-s1-page-link-min-width: 2.5rem;
+$pagination-s1-page-link-min-height: 2.5rem;
+$pagination-s1-page-link-padding-y: 0.375rem;
+$pagination-s1-page-link-padding-x: 0.938rem;
+$pagination-s1-page-link-color: $body-color;
+$pagination-s1-page-link-border-color: $border-light;
+$pagination-s1-page-link-border-radius: 0.5rem;
+
+$pagination-s1-page-link-hover-bg: $border-light;
+$pagination-s1-page-link-hover-color: $pagination-s1-page-link-hover-bg;
+
+$pagination-s1-page-link-active-bg: $primary;
+$pagination-s1-page-link-active-border-color: $pagination-s1-page-link-active-bg;
+$pagination-s1-page-link-active-color: $white;
+
+$pagination-s1-page-item-gap-x: 0.5rem;
+
+$pagination-s1-page-link-icon-font-size: 1.125rem;
+
+/////////  BREADCRUMB  //////////
+//////////////////////////////////////
+$breadcrumb-font-size: 0.875rem;
+
+/////////  404  //////////
+//////////////////////////////////////
+$error-number-font-size: 256px;
+$error-number-font-size-sm: 156px;
+$error-number-color: $primary;
+$error-number-font-weight: 700;
+
+/////////  VIDEO BTN S1  //////////
+//////////////////////////////////////
+$video-btn-s1-border: 2px dashed $red;
+$video-btn-s1-border-radius: 50%;
+$video-btn-s1-padding: 7px;
+
+/////////  SEP  //////////
+//////////////////////////////////////
+$sep-bg: #faf9ff;
+$sep-height: 1px;
+$sep-overlap-bg: $white;
+
+// Preloader
+$preloader-bg: mix($primary, $white, 20%);
+
+$loader-border-color-one: $primary;
+$loader-border-color-two: mix($primary, $white, 70%);
+$loader-border-color-three: mix($primary, $white, 40%);
+
+
+$btn-close-color: $dark;
+$btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>");
+
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+
+$nl-theme-colors: (
+  "blue-100": $blue-100,
+  "blue-400": $blue-400,
+  "blue-500": $blue-500,
+  "blue-600": $blue-600,
+  "blue-700": $blue-700,
+  "blue-800": $blue-800,
+  "blue-900": $blue-900,
+  "indigo-100": $indigo-100,
+  "indigo-500": $indigo-500,
+  "indigo-600": $indigo-600,
+  "indigo-700": $indigo-700,
+  "purple-100": $purple-100,
+  "purple-200": $purple-200,
+  "purple-300": $purple-300,
+  "purple-400": $purple-400,
+  "purple-500": $purple-500,
+  "purple-700": $purple-700,
+  "pink-100": $pink-100,
+  "pink-500": $pink-500,
+  "red-100": $red-100,
+  "red-200": $red-200,
+  "red-500": $red-500,
+  "orange-200": $orange-200,
+  "yellow-100": $yellow-100,
+  "yellow-400": $yellow-100,
+  "yellow-500": $yellow-500,
+  "green-100": $green-100,
+  "green-200": $green-200,
+  "green-500": $green-500,
+  "green-600": $green-600,
+  "green-800": $green-800,
+  "teal-100": $teal-100,
+  "teal-500": $teal-500,
+  "teal-600": $teal-600,
+  "teal-700": $teal-700,
+  "cyan-100": $cyan-100,
+  "cyan-200": $cyan-200,
+  "cyan-300": $cyan-300,
+  "cyan-500": $cyan-500,
+  "cyan-600": $cyan-600,
+  "gray-100": $gray-100,
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900
+);
+
+$colors: override-map-value($colors, "gray", $gray-400);
+
+$theme-colors: map-merge($theme-colors, $colors);
+$theme-colors: map-merge($theme-colors, $nl-theme-colors);
+
+// typography
+$nl-font-size: (
+  7: 1rem,
+  8: 0.875rem,
+  9: 0.75rem,
+  10: 0.625rem,
+  11: 0.5rem
+);
+
+$font-sizes: map-merge($font-sizes, $nl-font-size);
+
+$container-max-widths: override-map-value($container-max-widths, xxl, 1350px);
+
+// spacing
+$nl-spacers: (
+  100: 100px,
+  120: 120px,
+  160: 160px,
+  220: 220px
+);
+
+$spacers: map-merge($spacers, $nl-spacers);
+
+
+
+

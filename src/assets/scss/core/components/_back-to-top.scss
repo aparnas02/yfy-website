@@ -1,0 +1,30 @@
+.scroll-top {
+  opacity: 0;
+  right: 24px;
+  bottom: 70px;
+  z-index: 999;
+  cursor: pointer;
+  position: fixed;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+
+  @include media-breakpoint-up(sm) {
+    bottom: 50px;
+  }
+
+  @include media-breakpoint-up(md) {
+    bottom: 40px;
+  }
+
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.active {
+    opacity: 1;
+    user-select: all;
+    pointer-events: all;
+  }
+}

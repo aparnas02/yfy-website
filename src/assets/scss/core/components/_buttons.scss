@@ -1,0 +1,543 @@
+.btn {
+    gap: 8px;
+    align-items: center;
+    line-height: 1.5rem;
+    display: inline-flex;
+    justify-content: center;
+    text-transform: capitalize;
+
+    background: var(--#{$prefix}btn-bg);
+
+    .icon {
+        font-size: var(--#{$prefix}fs-4);
+    }
+
+    &-link {
+        --#{$prefix}btn-font-size: var(--#{$prefix}fs-7);
+        --#{$prefix}btn-font-weight: #{$font-weight-semibold};
+
+        gap: .5rem;
+        border: 0px;
+        padding: 0px;
+        cursor: pointer;
+        align-items: center;
+        display: inline-flex;
+        text-transform: capitalize;
+        background-color: transparent;
+        color: var(--#{$prefix}btn-color);
+        font-size: var(--#{$prefix}btn-font-size);
+        font-weight: var(--#{$prefix}btn-font-weight);
+
+        span { 
+            color: inherit;
+            font-size: inherit;
+        }
+        
+    }
+
+    &-block {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    // size variants
+
+    &-sm,
+    &-lg {
+        --#{$prefix}btn-border-radius: var(--#{$prefix}border-radius);
+    }
+}
+
+.btn {
+    --#{$prefix}btn-color: #fff;
+    --#{$prefix}btn-hover-color: #fff;
+    --#{$prefix}btn-active-color: #fff;
+
+    @each $color, $value in $theme-colors {
+        &-#{$color},
+        &-#{$color}-soft {
+
+            --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($value, 0.25)};
+
+            &:focus {
+                box-shadow: var(--#{$prefix}btn-focus-box-shadow);
+            }
+        }
+
+        &-#{$color} {
+            --#{$prefix}btn-bg: #{$value};
+        }
+
+        &-#{$color}-soft {
+            --#{$prefix}btn-color: #{$value};
+            --#{$prefix}btn-hover-color: var(--#{$prefix}white);
+            --#{$prefix}btn-active-color: var(--#{$prefix}white);
+
+            --#{$prefix}btn-bg: #{mix($value, $white, 15%)};
+            --#{$prefix}btn-hover-bg: #{$value};
+            --#{$prefix}btn-active-bg: #{$value};
+
+            --#{$prefix}btn-hover-border-color: #{$value};
+            --#{$prefix}btn-active-border-color: #{$value};
+
+            &:focus-visible {
+                --#{$prefix}btn-hover-color: #{$value};
+                --#{$prefix}btn-hover-bg: #{mix($value, $white, 15%)};
+            }
+        }
+
+        &-outline-#{$color} {
+            --#{$prefix}btn-color: #{$value};
+        }
+    }
+
+    // block, elements and modifiers
+    &-white,
+    &-outline-white {
+        --#{$prefix}btn-hover-color: #{$dark};
+        --#{$prefix}btn-focus-color: #{$dark};
+        --#{$prefix}btn-active-color: #{$dark};
+    }
+
+    &-white {
+        --#{$prefix}btn-color: #{$dark};
+    }
+
+    &-outline-white {
+        --#{$prefix}btn-color: #{$white};
+    }
+
+
+    &-primary,
+    &-primary-soft,
+    &-outline-primary {
+        --#{$prefix}btn-hover-border-color: var(--#{$prefix}primary);
+        --#{$prefix}btn-active-border-color: var(--#{$prefix}primary);
+    }
+
+    &-primary {
+        --#{$prefix}btn-border-color: var(--#{$prefix}primary);
+        --#{$prefix}btn-bg: var(--#{$prefix}primary);
+    }
+
+    &-primary-soft,
+    &-outline-primary { 
+        --#{$prefix}btn-color: var(--#{$prefix}primary);
+    }
+
+    &-primary-soft {        
+        --#{$prefix}btn-bg: var(--#{$prefix}primary-soft);
+        --#{$prefix}btn-border-color: var(--#{$prefix}primary-soft);
+    }
+
+    &-outline-primary {
+        --#{$prefix}btn-border-color: var(--#{$prefix}primary);
+        --#{$prefix}btn-disabled-color: var(--#{$prefix}primary);
+    }
+
+    
+}
+
+
+.layout { 
+
+    &-1,
+    &-16 { 
+
+        .btn { 
+
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($blue, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($blue, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($blue, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+    
+                --#{$prefix}btn-disabled-bg: #{shade-color($blue, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($blue, 25%)};
+            }
+        }
+
+    }
+
+    &-3,
+    &-17 { 
+        .btn { 
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+                --#{$prefix}btn-hover-bg: #{shade-color($indigo-700, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($indigo-700, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($indigo-700, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+                --#{$prefix}btn-disabled-bg: #{shade-color($indigo-700, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($indigo-700, 25%)};
+            }
+        }
+    }
+
+    &-4,
+    &-12 { 
+        .btn { 
+
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($blue-600, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($blue-600, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($blue-600, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+    
+                --#{$prefix}btn-disabled-bg: #{shade-color($blue-600, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($blue-600, 25%)};
+            }
+        }
+    }
+
+    &-6,
+    &-14 { 
+        .btn { 
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($indigo-600, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($indigo-600, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($indigo-600, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+                --#{$prefix}btn-disabled-bg: #{shade-color($indigo-600, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($indigo-600, 25%)};
+            }
+
+            &-white { 
+                --#{$prefix}btn-hover-color: var(--#{$prefix}white);
+                --#{$prefix}btn-hover-bg: var(--#{$prefix}primary);
+                --#{$prefix}btn-hover-border-color: var(--#{$prefix}primary);
+            }
+        }
+    }
+
+    &-7,
+    &-15,
+    &-21 { 
+        .btn {  
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+
+                --#{$prefix}btn-hover-bg: #{shade-color($indigo-500, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($indigo-500, 15%)};
+
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($indigo-500, 0.25)};
+            }
+
+            &-primary,
+            &-outline-primary {
+
+                --#{$prefix}btn-disabled-bg: #{shade-color($indigo-500, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($indigo-500, 25%)};
+            }
+        }
+    }
+
+
+    &-9,
+    &-19,
+    &-23 { 
+
+        .btn {             
+
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+
+                --#{$prefix}btn-hover-bg: #{shade-color($purple-500, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($purple-500, 15%)};
+
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($purple-500, 0.25)};
+            }
+
+            &-primary,
+            &-outline-primary {
+                --#{$prefix}btn-disabled-bg: #{shade-color($purple-500, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($purple-500, 25%)};
+            }
+        }
+
+    }
+
+    &-10,
+    &-20 { 
+        .btn { 
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+
+                --#{$prefix}btn-hover-bg: #{shade-color($cyan-600, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($cyan-600, 15%)};
+
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($cyan-600, 0.25)};
+            }
+
+            &-primary,
+            &-outline-primary {
+                --#{$prefix}btn-disabled-bg: #{shade-color($cyan-600, 25%)};
+
+                --#{$prefix}btn-disabled-border-color: #{shade-color($cyan-600, 25%)};
+            }
+        }
+    }
+
+    &-7,
+    &-19,
+    &-20,
+    &-21,
+    &-23 { 
+        .btn { 
+            --#{$prefix}btn-border-radius: var(--#{$prefix}border-radius-pill);
+        }
+    }
+
+
+    &-2 { 
+        .btn {
+            --#{$prefix}btn-border-radius: var(--#{$prefix}border-radius-lg);
+
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($red, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($red, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($red, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+                --#{$prefix}btn-disabled-bg: #{shade-color($red, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($red, 25%)};
+            }
+        }
+    }
+
+    &-4 { 
+        .btn {
+            --#{$prefix}btn-border-width: 2px;
+        }
+    }
+    
+
+    &-5 { 
+        .btn { 
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($teal-700, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($teal-700, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($teal-700, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+    
+                --#{$prefix}btn-disabled-bg: #{shade-color($teal-700, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($teal-700, 25%)};
+            }
+        }
+    }
+
+
+    &-8 { 
+
+        .btn { 
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+
+                --#{$prefix}btn-hover-bg: #{shade-color($green-500, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($green-500, 15%)};
+
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($green-500, 0.25)};
+            }
+
+            &-primary,
+            &-outline-primary {
+                --#{$prefix}btn-disabled-bg: #{shade-color($green-500, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($green-500, 25%)};
+            }
+        }
+    }
+
+    &-9 { 
+        .btn { 
+            --#{$prefix}btn-border-width: 0px;
+            &-link { 
+                --#{$prefix}btn-color: #{$white};
+            }
+        }
+    }
+
+
+    &-11 { 
+
+        .btn {
+
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($red-500, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($red-500, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($red-500, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+    
+                --#{$prefix}btn-disabled-bg: #{shade-color($red-500, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($red-500, 25%)};
+            }
+        }
+    }
+
+
+    &-13 { 
+
+        .btn { 
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($teal-600, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($teal-600, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($teal-600, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+    
+                --#{$prefix}btn-disabled-bg: #{shade-color($teal-600, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($teal-600, 25%)};
+            }
+        }
+    }
+
+    &-15,
+    &-18 { 
+        .btn { 
+            --#{$prefix}btn-border-radius: var(--#{$prefix}border-radius-pill); 
+        }
+    }
+
+    &-17 { 
+        .btn { 
+            --#{$prefix}btn-padding-x: 2rem;
+            --#{$prefix}btn-padding-y: 1rem;
+            --#{$prefix}btn-border-radius: 0px; 
+        }
+    }
+
+    &-18 {
+        .btn { 
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($purple-400, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($purple-400, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($purple-400, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+    
+                --#{$prefix}btn-disabled-bg: #{shade-color($purple-400, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($purple-400, 25%)};
+            }
+
+            &[class*="btn-outline"] { 
+                --#{$prefix}btn-border-color: transparent;
+            }
+
+    
+        }
+    }
+
+    &-20 { 
+       .btn { 
+            --#{$prefix}btn-padding-x: 2rem;
+            --#{$prefix}btn-padding-y: 1rem;
+       }
+    }
+
+    &-20,
+    &-23 { 
+       .btn { 
+            --#{$prefix}btn-padding-y: .875rem;
+       }
+    }
+
+    &-22 { 
+        .btn { 
+
+            --#{$prefix}btn-padding-y: 1rem;
+            --#{$prefix}btn-padding-x: 1.5rem;
+
+            &-primary,
+            &-primary-soft,
+            &-outline-primary {
+    
+                --#{$prefix}btn-hover-bg: #{shade-color($green-600, 15%)};
+                --#{$prefix}btn-active-bg: #{shade-color($green-600, 15%)};
+    
+                --#{$prefix}btn-focus-box-shadow: #{0 0 $focus-ring-blur $focus-ring-width rgba($green-600, 0.25)};
+            }
+    
+            &-primary,
+            &-outline-primary {
+    
+                --#{$prefix}btn-disabled-bg: #{shade-color($green-600, 25%)};
+                --#{$prefix}btn-disabled-border-color: #{shade-color($green-600, 25%)};
+            }
+    
+        }
+    }
+
+    &-23 { 
+        .btn { 
+            &-primary { 
+                --#{$prefix}btn-border-color: transprent;
+                --#{$prefix}btn-hover-border-color: transprent;
+                --#{$prefix}btn-bg: linear-gradient(276.37deg, #5CC1FF 5.91%, #6754F3 50.33%, #C4B9FF 94.75%)
+            }
+        }
+    }
+
+}

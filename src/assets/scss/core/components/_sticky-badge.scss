@@ -1,0 +1,31 @@
+.nl-sticky-badge {
+
+  --#{$prefix}sticky-border-radius: 4px 0px 0px 4px;
+
+  top: 30%;
+  right: 0px;
+  z-index: 999;
+  position: fixed;
+  overflow: hidden;
+  transform: translateY(-30%);
+  border-radius: var(--#{$prefix}sticky-border-radius);
+
+
+  &-item {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s linear;
+    color: var(--#{$prefix}white);
+    font-size: var(--#{$prefix}fs-7);
+
+    &:hover {
+      color: var(--#{$prefix}white);
+    }
+
+  }
+}

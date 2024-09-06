@@ -1,0 +1,123 @@
+.#{$prefix}tm {
+    --#{$prefix}tm-border: 1px solid var(--#{$prefix}border-color);
+
+    --#{$prefix}tm-box-shadow: var(--#{$prefix}box-shadow);
+
+    --#{$prefix}tm-icon-size: null;
+    --#{$prefix}tm-icon-color: var(--#{$prefix}primary);
+
+    --#{$prefix}tm-title-font-size: null;
+    --#{$prefix}tm-title-font-style: null;
+    --#{$prefix}tm-title-color: #{$headings-color};
+    --#{$prefix}tm-title-font-weight: #{$font-weight-bold};
+    --#{$prefix}tm-title-line-height: #{$line-height-base};
+
+    --#{$prefix}tm-comments-font-size: null;
+    --#{$prefix}tm-comments-font-style: null;
+    --#{$prefix}tm-comments-text-color: #{$headings-color};
+    --#{$prefix}tm-comments-line-height: #{$line-height-base};
+    --#{$prefix}tm-comments-font-weight: #{$font-weight-bold};
+
+    --#{$prefix}tm-user-title-font-size: null;
+    --#{$prefix}tm-user-title-text-color: #{$headings-color};
+    --#{$prefix}tm-user-title-line-height: #{$line-height-base};
+    --#{$prefix}tm-user-title-font-weight: #{$font-weight-bold};
+
+    --#{$prefix}tm-user-designation-font-size: var(--#{$prefix}fs-7);
+    --#{$prefix}tm-user-designation-text-color: var(--#{$prefix}gray-700);
+    --#{$prefix}tm-user-designation-font-weight: null;
+
+    border: var(--#{$prefix}tm-border);
+    box-shadow: var(--#{$prefix}tm-box-shadow);
+
+    &-icon {
+        color: var(--#{$prefix}tm-icon-color);
+        font-size: var(--#{$prefix}tm-icon-size);
+    }
+
+    &-title {
+        color: var(--#{$prefix}tm-title-color);
+        font-size: var(--#{$prefix}tm-title-font-size);
+        font-style: var(--#{$prefix}tm-title-font-style);
+        line-height: var(--#{$prefix}tm-title-line-height);
+        font-weight: var(--#{$prefix}tm-title-font-weight);
+    }
+
+    &-comments {
+        margin: 0;
+        color: var(--#{$prefix}tm-comments-text-color);
+        font-size: var(--#{$prefix}tm-comments-font-size);
+        font-style: var(--#{$prefix}tm-comments-font-style);
+        line-height: var(--#{$prefix}tm-comments-line-height);
+        font-weight: var(--#{$prefix}tm-comments-font-weight);
+    }
+
+    &-user {
+        &-title {
+            margin: 0;
+            color: var(--#{$prefix}tm-user-title-text-color);
+            font-size: var(--#{$prefix}tm-user-title-font-size);
+            line-height: var(--#{$prefix}tm-user-title-line-height);
+        }
+
+        &-designation {
+            color: var(--#{$prefix}tm-user-designation-text-color);
+            font-size: var(--#{$prefix}tm-user-designation-font-size);
+            font-weight: var(--#{$prefix}tm-user-designation-font-weight);
+        }
+    }
+
+    &.style-1 {
+        --#{$prefix}tm-icon-size: 3.75rem;
+
+        @include media-breakpoint-up(lg) {
+            --#{$prefix}tm-icon-size: 5.25rem;
+        }
+
+        --#{$prefix}tm-comments-line-height: 1.6;
+        --#{$prefix}tm-comments-font-style: null;
+        --#{$prefix}tm-comments-font-size: var(--#{$prefix}fs-5);
+
+        @include media-breakpoint-up(lg) {
+            --#{$prefix}tm-comments-font-size: var(--#{$prefix}fs-3);
+        }
+
+        --#{$prefix}tm-user-title-font-size: var(--#{$prefix}fs-6);
+
+        @include media-breakpoint-up(lg) {
+            --#{$prefix}tm-user-title-font-size: var(--#{$prefix}fs-4);
+        }
+
+        --#{$prefix}tm-user-designation-font-size: var(--#{$prefix}fs-8);
+
+        @include media-breakpoint-up(lg) {
+            --#{$prefix}tm-user-designation-font-size: var(--#{$prefix}fs-7);
+        }
+
+        --#{$prefix}tm-user-designation-text-color: var(--#{$prefix}gray-700);
+        --#{$prefix}tm-user-designation-font-weight: null;
+    }
+
+    &.style-2 {
+        --#{$prefix}tm-padding: 3;
+        --#{$prefix}tm-border: null;
+
+        @include media-breakpoint-up(lg) {
+            --#{$prefix}card-spacer-y: 3.75rem;
+            --#{$prefix}card-spacer-x: 3.75rem;
+        }
+
+        --#{$prefix}tm-title-font-size: var(--#{$prefix}fs-5);
+
+        @include media-breakpoint-up(lg) {
+            --#{$prefix}tm-title-font-size: var(--#{$prefix}fs-3);
+        }
+
+        --#{$prefix}tm-comments-line-height: 1.5;
+        --#{$prefix}tm-comments-font-weight: normal;
+        --#{$prefix}tm-comments-font-size: var(--#{$prefix}fs-7);
+        --#{$prefix}tm-comments-text-color: var(--#{$prefix}gray-700);
+
+        border-top: 8px solid var(--#{$prefix}primary);
+    }
+}

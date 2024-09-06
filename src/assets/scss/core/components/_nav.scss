@@ -1,0 +1,123 @@
+
+.#{$prefix}tab {
+
+  .nav {
+    --#{$prefix}nav-link-bg-color: none;
+    --#{$prefix}nav-link-color: var(--#{$prefix}dark);
+    --#{$prefix}nav-link-hover-color: --#{$prefix}nl-nav-link-color;
+
+
+    &-link { 
+      background-color: var(--#{$prefix}nav-link-bg-color);
+    }
+
+
+  }
+
+  &.style-1 {
+    .nav {
+
+      &-link {
+        .nl-media {
+          --#{$prefix}media-text-color: #{$dark};
+        }
+
+        &.active {
+          .nl-media {
+            --#{$prefix}media-text-color: var(--#{$prefix}white);
+            --#{$prefix}media-bg-color: var(--#{$prefix}primary);
+          }
+        }
+      }
+    }
+  }
+
+  &.style-2 { 
+
+    .nav { 
+      --#{$prefix}nav-link-bg-color: #{$white};
+
+      --#{$prefix}nav-link-padding-x: 12px;
+      --#{$prefix}nav-link-padding-y: 12px;
+
+      @include media-breakpoint-up(lg)  {
+        --#{$prefix}nav-link-padding-x: 24px;
+        --#{$prefix}nav-link-padding-y: 24px;
+      }
+
+
+      &-pills { 
+        --#{$prefix}nav-pills-border-radius: var(--#{$prefix}border-radius-pill);
+      }
+
+      &-link { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .tab { 
+      &-pane { 
+        z-index: 1;
+        position: relative;
+      }
+    }
+  }
+
+
+  &.style-3 { 
+
+    .nav { 
+      --#{$prefix}nav-link-padding-x: 15px;
+      --#{$prefix}nav-link-padding-y: 1.5rem;
+      
+      --#{$prefix}nav-link-border-color: var(--#{$prefix}border-color);
+      --#{$prefix}nav-link-border: 1px solid var(--#{$prefix}nav-link-border-color);
+
+      &-link { 
+        padding-top: 0px;
+        position: relative;
+        border-bottom: var(--#{$prefix}nav-link-border);
+
+        &.active { 
+          --#{$prefix}nav-link-border-color: var(--#{$prefix}dark);
+
+          border-bottom:  1px solid var(--#{$prefix}nav-link-border-color);
+          
+        }
+
+      }
+    }
+
+  }
+
+
+}
+
+
+.layout { 
+  &-18 { 
+    .#{$prefix}tab {
+
+      &.style-1 {
+        .nav {
+
+          &-link {
+            .nl-media {
+              --#{$prefix}media-text-color: var(--#{$prefix}primary);
+            }    
+
+            &.active {
+              .nl-media {
+                --#{$prefix}border-color: var(--#{$prefix}primary);
+                --#{$prefix}media-text-color: var(--#{$prefix}white);
+              }
+            }
+          }
+        }
+      }
+      
+    }
+  }
+}

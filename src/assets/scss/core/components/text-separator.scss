@@ -1,0 +1,41 @@
+.#{$prefix}text-sep { 
+  
+ --#{$prefix}nl-text-sep-color: var(--#{$prefix}dark); 
+ --#{$prefix}nl-text-sep-font-size: var(--#{$prefix}fs-8); 
+ --#{$prefix}nl-text-sep-font-weight: #{$font-weight-semibold}; 
+
+ --#{$prefix}nl-text-sep-spacing: 0px 1.5rem; 
+ --#{$prefix}nl-text-sep-border-color : var(--#{$prefix}border-color); 
+
+  position: relative;
+  text-align: center; 
+  display: inline-block;
+  padding: var(--#{$prefix}nl-text-sep-spacing);
+
+  &::after ,
+  &::before { 
+    top: 50%;
+    content: "";
+    height: 1px;
+    width: 100vw;
+    position: absolute;
+    transform: translateY(-50%);
+    background-color: var(--#{$prefix}nl-text-sep-border-color);
+  }
+
+  &::before { 
+    right: 100%;
+  }
+
+  &::after { 
+    left: 100%;
+  }
+
+  span { 
+    text-transform: uppercase;
+    color: var(--#{$prefix}nl-text-sep-color);
+    font-size: var(--#{$prefix}nl-text-sep-font-size);
+    font-weight: var(--#{$prefix}nl-text-sep-font-weight);
+  }
+
+}

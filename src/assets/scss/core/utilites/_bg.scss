@@ -1,0 +1,18 @@
+.bg-primary-gradient {
+    --#{$prefix}bg-primary-gradient: #{$bg-primary-gradient};
+    background: var(--#{$prefix}bg-primary-gradient);
+}
+
+.bg-primary-gradient-soft {
+    --#{$prefix}bg-primary-gradient-soft: #{$bg-primary-gradient-soft};
+    background: var(--#{$prefix}bg-primary-gradient-soft) ;
+}
+
+
+.layout { 
+    &-16 { 
+        .bg-primary-gradient { 
+         --#{$prefix}bg-primary-gradient: linear-gradient(147.84deg, #faf9f4 42.86%, #e4fdfd 102.04%);   
+        }
+    }
+}

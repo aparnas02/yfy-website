@@ -1,0 +1,24 @@
+.logo{
+    &-wrap{
+        display: inline-flex;
+        position: relative;
+    }
+    
+    &-link{
+        display: inline-flex;
+    }
+
+    &-img{
+        width: 150px;
+        height: auto;
+        &:not(:first-child){
+            position: absolute;
+            left: 0;
+        }
+    }
+
+    &-light{
+        opacity: 0;
+        visibility: hidden;
+    }
+}

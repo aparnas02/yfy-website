@@ -1,0 +1,88 @@
+.nl-toast {
+
+  --#{$prefix}toast-bg: var(--#{$prefix}white);
+  --#{$prefix}nl-toast-highlight-color: #ddd;
+  --#{$prefix}nl-toast-icon-bg-color: var(--#{$prefix}nl-toast-highlight-color);
+  --#{$prefix}nl-toast-border-bottom-color: var(--#{$prefix}nl-toast-highlight-color);
+  
+  &.nl-toast-success {
+    --#{$prefix}nl-toast-highlight-color: #{$success};
+  }
+
+  &.nl-toast-error {
+    --#{$prefix}nl-toast-highlight-color: #{$danger};    
+  }
+
+  &.nl-toast-warning {
+    --#{$prefix}nl-toast-highlight-color: #{$warning};
+  }
+
+  gap: 12px;
+  top: 84px;
+  right: 50%;
+  width: 90%;
+  z-index: 9999;
+  display: flex;
+  position: fixed;
+  overflow: hidden;
+  align-items: center;
+  transform: translateX(50%);
+  padding: 12px 18px 16px 20px;
+
+  @include media-breakpoint-up(sm) { 
+    top: 100px;
+    right: 12px;
+    width: auto;
+    transform: translateX(0);
+  }
+  
+  &::after { 
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: calc(100% - 4px);
+    background-color: var(--#{$prefix}nl-toast-border-bottom-color);
+  }
+
+  &-icon {
+    width: 24px;
+    height: 24px;
+    color: $white;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    background-color: #ddd;
+    background-color: var(--#{$prefix}nl-toast-icon-bg-color);
+  }
+
+  &-btn {
+    top: 12px;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    right: 12px;
+    font-size: 18px;
+    position: absolute;
+    display: inline-block;
+    background: transparent;
+    box-shadow: none !important;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
+
+
+.layout-9 { 
+  .toast { 
+    --#{$prefix}toast-bg: var(--#{$prefix}body-bg);
+  }
+}
